@@ -1,4 +1,4 @@
-package com.vinicius.product_catalog_api;
+package com.vinicius.productcatalogapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -3,6 +3,7 @@ package com.vinicius.productcatalogapi.service;
 import com.vinicius.productcatalogapi.model.Product;
 import com.vinicius.productcatalogapi.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @CacheEvict(value = "products", allEntries = true)
     public Product create(Product product) {
         return productRepository.save(product);
     }
@@ -24,7 +26,7 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    @Cacheable("products")
+    @Cacheable(value = "products")
     public List<Product> getAll() {
         return productRepository.findAll();
     }

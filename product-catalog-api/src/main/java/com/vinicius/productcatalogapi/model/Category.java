@@ -1,16 +1,21 @@
 package com.vinicius.productcatalogapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Table(name = "category")
 @Data
+@Getter
+@Setter
 public class Category {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String description;
-    private String ownerId;
+    private Long ownerId;
 }
